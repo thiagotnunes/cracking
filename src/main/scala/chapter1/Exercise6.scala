@@ -1,7 +1,5 @@
 package chapter1
 
-import chapter1.Exercise6.Matrix
-
 import scala.collection.mutable.ArrayBuffer
 
 class Exercise6 {
@@ -25,6 +23,4 @@ class Exercise6 {
   }
 }
 
-object Exercise6 {
-  type Matrix[T] = ArrayBuffer[ArrayBuffer[T]]
-}
+
