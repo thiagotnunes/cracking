@@ -7,20 +7,43 @@ class Exercise3 {
   // Time complexity - O(n)
   // Space complexity - O(n)
   def isPermutation(s1: String, s2: String): Boolean = {
-    val s1Chars = mutable.Set[Char]()
-    val s2Chars = mutable.Set[Char]()
     if (s1.length != s2.length) {
       false
     } else {
-      for (i <- 0 until s1.length) {
-        s1Chars.add(s1(i))
-      }
-      for (i <- 0 until s2.length) {
-        s2Chars.add(s2(i))
+      val s1Chars = countChars(s1)
+      val s2Chars = countChars(s2)
+
+      val sameChars = s1Chars.keySet.diff(s2Chars.keySet).isEmpty
+      var sameCharCount = true
+      breakable {
+        if (sameChars) {
+          for (c <- s1Chars.keySet) {
+            if (s1Chars(c) != s2Chars(c)) {
+              sameCharCount = false
+              break
+            }
+          }
+        }
       }
 
-      s1Chars.diff(s2Chars).isEmpty
+      sameChars && sameCharCount
     }
+  }
+
+  // Time complexity - O(n)
+  // Space complexity - O(n)
+  private def countChars(s: String): mutable.Map[Char, Int] = {
+    val chars = mutable.Map[Char, Int]()
+    for (i <- 0 until s.length) {
+      val currentChar = s(i)
+      if (chars.contains(currentChar)) {
+        val count = chars(currentChar)
+        chars(currentChar) = count + 1
+      } else {
+        chars(currentChar) = 1
+      }
+    }
+    chars
   }
 
   // Time complexity - O(n^2)

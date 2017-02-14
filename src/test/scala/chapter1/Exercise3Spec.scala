@@ -7,9 +7,9 @@ class Exercise3Spec extends Specification {
   val exercise = new Exercise3
 
   "returns true when second string is permutation of the first" in {
-    exercise.isPermutation("abcdef", "badcfe") ==== true
-    exercise.isPermutation2("abcdef", "badcfe") ==== true
-    exercise.isPermutation3("abcdef", "badcfe") ==== true
+    exercise.isPermutation("aabcdef", "badcfea") ==== true
+    exercise.isPermutation2("aabcdef", "badcfea") ==== true
+    exercise.isPermutation3("aabcdef", "badcfea") ==== true
   }
 
   "returns true when both strings are empty" in {
